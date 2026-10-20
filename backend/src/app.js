@@ -22,7 +22,7 @@ app.use(express.urlencoded({ limit: "40kb", extended: true }));
 app.use("/api/v1/users", userRoutes);
 
 const start = async () => {
-    app.set("mongo_user")
+    if (!process.env.MONGODB_URI) throw new Error("Set MONGODB_URI in backend/.env");
     const connectionDb = await mongoose.connect(process.env.MONGODB_URI)
 
     console.log(`MONGO Connected DB HOst: ${connectionDb.connection.host}`)
@@ -36,4 +36,7 @@ const start = async () => {
 
 
 
-start();
+start().catch(() => {
+    console.error("MeetBridge could not start. Check the database configuration and network access.");
+    process.exit(1);
+});

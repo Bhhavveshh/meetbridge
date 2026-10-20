@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('shows the meeting landing page and registration entry point', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: 'MeetBridge' })).toBeInTheDocument();
+  expect(screen.getByRole('link', { name: 'Get Started' })).toHaveAttribute('href', '/auth');
 });

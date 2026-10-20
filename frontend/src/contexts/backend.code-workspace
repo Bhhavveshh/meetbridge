@@ -1,11 +1,4 @@
 {
-	"folders": [
-		{
-			"path": "../../../backend"
-		},
-		{
-			"path": "../.."
-		}
-	],
-	"settings": {}
+  "folders": [{ "path": "../../../backend" }],
+  "settings": {}
 }
